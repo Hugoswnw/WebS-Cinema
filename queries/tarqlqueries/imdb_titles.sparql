@@ -1,0 +1,14 @@
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX imdb: <https://www.imdb.com/title/>
+
+CONSTRUCT {
+    ?id a dbo:Movie;
+        rdfs:label ?originalTitle.
+}
+WHERE {
+    BIND (URI(CONCAT('https://www.imdb.com/title/', ?tconst)) AS ?id).
+    FILTER (?titleType="movie")
+}
