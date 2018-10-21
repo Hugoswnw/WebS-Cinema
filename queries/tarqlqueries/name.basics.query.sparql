@@ -1,0 +1,41 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX imdb: <http://www.imdb.com/title/>
+PREFIX sch: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+
+#type, name
+CONSTRUCT {
+    ?id a sch:Person;
+        sch:name ?primaryName.
+}
+WHERE {
+    BIND (URI(CONCAT('http://www.imdb.com/name/', ?nconst)) AS ?id).
+}
+
+#if birthDate is not null
+CONSTRUCT {
+    ?id sch:birthDate ?birthYear.
+}
+WHERE {
+    BIND (URI(CONCAT('http://www.imdb.com/name/', ?nconst)) AS ?id).
+    FILTER (?birthYear != '\\N').
+}
+
+#if deathDate is not null
+CONSTRUCT {
+    ?id sch:deathDate ?deathYear.
+}
+WHERE {
+    BIND (URI(CONCAT('http://www.imdb.com/name/', ?nconst)) AS ?id).
+    FILTER (?deathYear != '\\N').
+}
+
+# not working
+# CONSTRUCT {
+#     ?id sch:jobTitle ?profession.
+# }
+# WHERE {
+#     BIND (URI(CONCAT('http://www.imdb.com/name/', ?nconst)) AS ?id).
+#     ?profession apf:strSplit (?primaryProfession ",").
+# }

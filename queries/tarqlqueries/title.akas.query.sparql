@@ -9,7 +9,7 @@ CONSTRUCT {
     ?id sch:countryOfOrigin ?region.
 }
 WHERE {
-    BIND (URI(CONCAT('https://www.imdb.com/title/', ?titleId)) AS ?id).
+    BIND (URI(CONCAT('http://www.imdb.com/title/', ?titleId)) AS ?id).
     FILTER (?region != '\\N').
 }
 
@@ -18,6 +18,6 @@ CONSTRUCT {
     ?id sch:inLanguage ?language.
 }
 WHERE {
-    BIND (URI(CONCAT('https://www.imdb.com/title/', ?titleId)) AS ?id).
+    BIND (URI(CONCAT('http://www.imdb.com/title/', ?titleId)) AS ?id).
     FILTER (?language != '\\N').
 }

@@ -11,7 +11,7 @@ CONSTRUCT {
         sch:datePublished ?startYear.
 }
 WHERE {
-    BIND (URI(CONCAT('https://www.imdb.com/title/', ?tconst)) AS ?id).
+    BIND (URI(CONCAT('http://www.imdb.com/title/', ?tconst)) AS ?id).
 }
 
 #split genres
@@ -19,7 +19,7 @@ CONSTRUCT {
     ?id sch:genre ?genre.
 }
 WHERE {
-    BIND (URI(CONCAT('https://www.imdb.com/title/', ?tconst)) AS ?id).
+    BIND (URI(CONCAT('http://www.imdb.com/title/', ?tconst)) AS ?id).
     OPTIONAL { ?genre apf:strSplit (?genres ","). FILTER (?genres != '\\N')}
 }
 
@@ -28,7 +28,7 @@ CONSTRUCT {
     ?id sch:duration ?duration.
 }
 WHERE {
-    BIND (URI(CONCAT('https://www.imdb.com/title/', ?tconst)) AS ?id).
+    BIND (URI(CONCAT('http://www.imdb.com/title/', ?tconst)) AS ?id).
     BIND (CONCAT("PT", CONCAT(?runtimeMinutes, "M")) AS ?duration).
     FILTER (?runtimeMinutes!="\\N").
 }
