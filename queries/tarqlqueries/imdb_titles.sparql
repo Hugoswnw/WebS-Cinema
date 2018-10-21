@@ -1,14 +1,34 @@
-PREFIX dbp: <http://dbpedia.org/property/>
-PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX imdb: <https://www.imdb.com/title/>
+PREFIX imdb: <http://www.imdb.com/title/>
+PREFIX sch: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
 
+#Movie type, title, pubication date
 CONSTRUCT {
-    ?id a dbo:Movie;
-        rdfs:label ?originalTitle.
+    ?id a sch:Movie;
+        sch:name ?originalTitle;
+        sch:datePublished ?startYear.
 }
 WHERE {
     BIND (URI(CONCAT('https://www.imdb.com/title/', ?tconst)) AS ?id).
-    FILTER (?titleType="movie")
+}
+
+#split genres
+CONSTRUCT {
+    ?id sch:genre ?genre.
+}
+WHERE {
+    BIND (URI(CONCAT('https://www.imdb.com/title/', ?tconst)) AS ?id).
+    OPTIONAL { ?genre apf:strSplit (?genres ","). FILTER (?genres != '\\N')}
+}
+
+#duration if exists
+CONSTRUCT {
+    ?id sch:duration ?duration.
+}
+WHERE {
+    BIND (URI(CONCAT('https://www.imdb.com/title/', ?tconst)) AS ?id).
+    BIND (CONCAT("PT", CONCAT(?runtimeMinutes, "M")) AS ?duration).
+    FILTER (?runtimeMinutes!="\\N").
 }
