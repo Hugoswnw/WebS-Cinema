@@ -3,12 +3,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX imdb: <http://www.imdb.com/title/>
 PREFIX sch: <http://schema.org/>
 PREFIX apf: <http://jena.apache.org/ARQ/property#>
-
+PREFIX swnw: <http://swnw.eu/>
 #Movie type, title, pubication date
 CONSTRUCT {
     ?id a sch:Movie;
         sch:name ?originalTitle;
-        sch:datePublished ?startYear.
+        sch:datePublished ?startYear;
+        swnw:type ?titleType. 
 }
 WHERE {
     BIND (URI(CONCAT('http://www.imdb.com/title/', ?tconst)) AS ?id).

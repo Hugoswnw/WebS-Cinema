@@ -1,0 +1,11 @@
+PREFIX sch: <http://schema.org/>
+PREFIX swnw: <http://swnw.eu/>
+
+SELECT ?name (COUNT(?id) AS ?nbFilms)
+WHERE {
+	?id sch:director ?director.
+  	?director sch:name ?name.
+}
+GROUP BY ?name
+ORDER BY DESC( ?nbFilms)
+LIMIT 5
