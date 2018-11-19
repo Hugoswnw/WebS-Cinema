@@ -12,4 +12,5 @@ CONSTRUCT {
 WHERE {
     BIND (URI(CONCAT('http://www.imdb.com/title/', ?tconst)) AS ?id).
     BIND (URI(CONCAT('http://www.imdb.com/name/', ?nconst)) AS ?actorid).
+    FILTER (?category="actor").
 }

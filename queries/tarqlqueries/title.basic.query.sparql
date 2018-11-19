@@ -8,11 +8,12 @@ PREFIX swnw: <http://swnw.eu/>
 CONSTRUCT {
     ?id a sch:Movie;
         sch:name ?originalTitle;
-        sch:datePublished ?startYear;
-        swnw:type ?titleType. 
+        sch:datePublished ?dateStartYear;
+        swnw:type ?titleType.
 }
 WHERE {
     BIND (URI(CONCAT('http://www.imdb.com/title/', ?tconst)) AS ?id).
+    BIND (STRDT(STR(?startYear), sch:Date) AS ?datStartYear).
 }
 
 #split genres
@@ -30,6 +31,6 @@ CONSTRUCT {
 }
 WHERE {
     BIND (URI(CONCAT('http://www.imdb.com/title/', ?tconst)) AS ?id).
-    BIND (CONCAT("PT", CONCAT(?runtimeMinutes, "M")) AS ?duration).
+    BIND (STRDT(CONCAT("PT", CONCAT(?runtimeMinutes, "M")), sch:Duration) AS ?duration).
     FILTER (?runtimeMinutes!="\\N").
 }

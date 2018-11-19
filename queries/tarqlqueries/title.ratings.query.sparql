@@ -7,7 +7,7 @@ PREFIX apf: <http://jena.apache.org/ARQ/property#>
 #
 CONSTRUCT {
     ?id sch:ratingValue ?averageRating;
-        sch:ratingCount ?numVotes;
+        sch:ratingCount ?intNumVotes;
         a sch:AggregateRating.
     ?movie sch:aggregateRating ?id.
 
@@ -15,4 +15,6 @@ CONSTRUCT {
 WHERE {
     BIND (URI(CONCAT('http://www.imdb.com/title/rating/', ?tconst)) AS ?id).
     BIND (URI(CONCAT('http://www.imdb.com/title/', ?tconst)) AS ?movie).
+    BIND (STRDT(STR(?numVotes), sch:Integer) AS ?intNumVotes).
+    BIND (STRDT(STR(?numVotes), sch:Number) AS ?numRatingValue).
 }

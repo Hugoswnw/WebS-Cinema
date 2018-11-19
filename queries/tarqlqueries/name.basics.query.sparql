@@ -15,19 +15,21 @@ WHERE {
 
 #if birthDate is not null
 CONSTRUCT {
-    ?id sch:birthDate ?birthYear.
+    ?id sch:birthDate ?dateBirthYear.
 }
 WHERE {
     BIND (URI(CONCAT('http://www.imdb.com/name/', ?nconst)) AS ?id).
+    BIND (STRDT(STR(?birthYear), sch:Date) AS ?dateBirthYear).
     FILTER (?birthYear != '\\N').
 }
 
 #if deathDate is not null
 CONSTRUCT {
-    ?id sch:deathDate ?deathYear.
+    ?id sch:deathDate ?dateDeathYear.
 }
 WHERE {
     BIND (URI(CONCAT('http://www.imdb.com/name/', ?nconst)) AS ?id).
+    BIND (STRDT(STR(?deathYear), sch:Date) AS ?dateDeathYear).
     FILTER (?deathYear != '\\N').
 }
 

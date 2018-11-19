@@ -6,10 +6,11 @@ PREFIX apf: <http://jena.apache.org/ARQ/property#>
 
 #region
 CONSTRUCT {
-    ?id sch:countryOfOrigin ?region.
+    ?id sch:countryOfOrigin ?countryRegion.
 }
 WHERE {
     BIND (URI(CONCAT('http://www.imdb.com/title/', ?titleId)) AS ?id).
+    BIND (STRDT(STR(?region), sch:Country) AS ?countryRegion).
     FILTER (?region != '\\N').
 }
 
