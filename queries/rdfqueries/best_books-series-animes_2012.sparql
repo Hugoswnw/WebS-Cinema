@@ -1,0 +1,30 @@
+PREFIX sch: <http://schema.org/>
+PREFIX swnw: <http://swnw.eu/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX purl: <http://purl.org/stuff/rev#>
+PREFIX dbpedia: <http://dbpedia.org/ontology#>
+
+SELECT  ?id ?title ?averageRating ?year
+WHERE { 
+  ?id sch:name ?title;
+      sch:datePublished ?y.
+  	  BIND (STR(ROUND(xsd:decimal(?y))) AS ?year).
+  { 
+    ?id a dbpedia:Anime.
+    ?id purl:rating ?value.
+    BIND(xsd:decimal(?value) AS ?averageRating).
+  }
+  UNION {
+    ?id a sch:Movie;
+        sch:aggregateRating ?x.
+    ?x sch:ratingValue ?value.
+    BIND(xsd:decimal(?value) AS ?averageRating).
+  } UNION {
+    ?id  a sch:Book.
+    ?id purl:rating ?value.
+    BIND((xsd:decimal(?value)*2) AS ?averageRating).
+  }
+  FILTER(?year = "2012").
+}
+ORDER BY DESC(?averageRating)
+LIMIT 200

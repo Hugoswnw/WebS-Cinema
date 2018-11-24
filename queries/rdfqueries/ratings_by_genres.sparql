@@ -1,0 +1,27 @@
+PREFIX sch: <http://schema.org/>
+PREFIX swnw: <http://swnw.eu/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX purl: <http://purl.org/stuff/rev#>
+
+
+SELECT  ?genre (AVG(?averageRating) AS ?Moyenne)
+WHERE { 
+  {
+  	?id sch:name ?title.
+	?id purl:rating ?averageRating.
+	?id sch:genre ?genre
+
+  } UNION {
+  	?id sch:name ?title.
+	?id a sch:Movie.
+	?id sch:aggregateRating ?x.
+	?id sch:ratingValue ?value.
+	?id sch:genre ?genre
+
+	BIND(xsd:decimal(?value) AS ?averageRating).
+    
+}
+}
+GROUP BY ?genre
+ORDER BY DESC(?Moyenne)
+LIMIT 200
