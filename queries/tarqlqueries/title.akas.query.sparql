@@ -1,0 +1,24 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX imdb: <http://www.imdb.com/title/>
+PREFIX sch: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+
+#region
+CONSTRUCT {
+    ?id sch:countryOfOrigin ?countryRegion.
+}
+WHERE {
+    BIND (URI(CONCAT('http://www.imdb.com/title/', ?titleId)) AS ?id).
+    BIND (STRDT(STR(?region), sch:Country) AS ?countryRegion).
+    FILTER (?region != '\\N').
+}
+
+#language
+CONSTRUCT {
+    ?id sch:inLanguage ?language.
+}
+WHERE {
+    BIND (URI(CONCAT('http://www.imdb.com/title/', ?titleId)) AS ?id).
+    FILTER (?language != '\\N').
+}
