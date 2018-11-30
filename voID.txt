@@ -1,0 +1,61 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:IMDb               a                        void:Dataset;
+                    dcterms:title            "IMDb: Internet Movie Database";
+                    dcterms:description      "Base de données en ligne sur le cinéma mondial et la télévision";
+                    dcterms:subject          <https://schema.org/Movie>;
+                    foaf:homepage            <https://github.com/SheepWithNoWool/WebS-Cinema>;
+                    dcterms:contributor      :Univ_Nantes;
+                    dcterms:publisher        :CATELLA_Solene;
+                    dcterms:publisher        :DUSSUET_Ines;
+					          dcterms:publisher        :LE_BAHER_Hugo;
+                    dcterms:created          "2018-10-23"^^xsd:date;
+                    dcterms:modified         "2018-11-20"^^xsd:date;
+                    dcterms:license          <https://www.opendatacommons.org/licenses/pddl/>;
+                    void:feature             <http://www.w3.org/ns/formats/Turtle>;
+                    void:vocabulary          <http://schema.org/>;
+                    void:vocabulary          <http://www.w3.org/2001/XMLSchema#>;
+                    void:triples             91045925.
+
+:Goodbooks          a                        void:Dataset;
+                    dcterms:title            "Goodbooks";
+                    dcterms:description      "Base de données de recommandation de livres, analogue à IMDb";
+                    dcterms:subject          <https://schema.org/Book>;
+                    foaf:homepage            <https://github.com/SheepWithNoWool/WebS-Cinema>;
+                    dcterms:contributor      :Univ_Nantes;
+                    dcterms:publisher        :CATELLA_Solene;
+                    dcterms:publisher        :DUSSUET_Ines;
+                    dcterms:publisher        :LE_BAHER_Hugo;
+                    dcterms:created          "2018-11-18"^^xsd:date;
+                    dcterms:modified         "2018-11-20"^^xsd:date;
+                    dcterms:license          <https://www.opendatacommons.org/licenses/pddl/>;
+                    void:feature             <http://www.w3.org/ns/formats/Turtle>;
+                    void:vocabulary          <http://schema.org/>;
+                    void:vocabulary          <http://purl.org/stuff/rev#>;
+                    void:triples             65444.
+
+:IMDbLD             a                        void:Linkset;
+                    void:target              :IMDb;
+                    void:target              :Goodbooks;
+                    void:target              :Anime_maxime_arthur;
+                    void:linkedPredicate     owl:sameAs.
+
+:Univ_Nantes        a                        foaf:Organization;
+                    rdfs:label               "Université de Nantes";
+                    foaf:homepage            <http://www.univ-nantes.fr>.
+
+:CATELLA_Solene     a                        foaf:Person;
+                    rdfs:label               "CATELLA Solène";
+                    foaf:mbox                <solene.catella@etu.univ-nantes.fr>.
+
+:DUSSUET_Ines       a                        foaf:Person;
+                    rdfs:label               "DUSSUET Inès";
+                    foaf:mbox                <ines.dussuet@etu.univ-nantes.fr>.
+
+:LE_BAHER_Hugo	    a                        foaf:Person;
+                    rdfs:label               "LE BAHER Hugo";
+                    foaf:mbox                <hugo.le-baher@etu.univ-nantes.fr>.

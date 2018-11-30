@@ -1,7 +1,7 @@
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sch: <http://schema.org/>
-PREFIX rev: <http://purl.org/stuff/rev#>
+PREFIX purl: <http://purl.org/stuff/rev#>
 
 CONSTRUCT{
   ?bookURI a sch:Book;
@@ -10,7 +10,7 @@ CONSTRUCT{
     sch:creator ?authors;
     sch:isbn ?isbn13;
     sch:datePublished ?original_publication_year;
-    rev:rating ?average_rating.
+    purl:rating ?average_rating.
 }
 WHERE{
   BIND(URI(CONCAT('http://www.goodreads.com/book/show/', ENCODE_FOR_URI((CONCAT(?book_id, (CONCAT("-",REPLACE(LCASE(?original_title), " ", "-")))))))) AS ?bookURI)
