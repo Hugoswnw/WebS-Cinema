@@ -12,7 +12,7 @@
                     dcterms:contributor      :Univ_Nantes;
                     dcterms:publisher        :CATELLA_Solene;
                     dcterms:publisher        :DUSSUET_Ines;
-					          dcterms:publisher        :LE_BAHER_Hugo;
+                    dcterms:publisher        :LE_BAHER_Hugo;
                     dcterms:created          "2018-10-23"^^xsd:date;
                     dcterms:modified         "2018-11-20"^^xsd:date;
                     dcterms:license          <https://www.opendatacommons.org/licenses/pddl/>;
