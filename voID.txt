@@ -9,6 +9,12 @@
                     dcterms:description      "Base de données en ligne sur le cinéma mondial et la télévision";
                     dcterms:subject          <https://schema.org/Movie>;
                     foaf:homepage            <https://github.com/SheepWithNoWool/WebS-Cinema>;
+                    void:subset              :IMDb_akas;
+                    void:subset              :IMDb_title_basics;
+                    void:subset              :IMDb_crew;
+                    void:subset              :IMDb_principals;
+                    void:subset              :IMDb_ratings;
+                    void:subset              :IMDb_name_basics;
                     dcterms:contributor      :Univ_Nantes;
                     dcterms:publisher        :CATELLA_Solene;
                     dcterms:publisher        :DUSSUET_Ines;
@@ -20,6 +26,30 @@
                     void:vocabulary          <http://schema.org/>;
                     void:vocabulary          <http://www.w3.org/2001/XMLSchema#>;
                     void:triples             91045925.
+
+:IMDb_akas          dcterms:title            "Title akas";
+                    dcterms:description      "Données génériques liées aux films/émissions (titre, pays de production, langue)";
+                    void:dataDump            <https://github.com/SheepWithNoWool/WebS-Cinema/blob/master/queries/tarqlqueries/title.akas.query.sparql>.
+
+:IMDb_title_basics  dcterms:title            "Title basics";
+                    dcterms:description      "Données génériques liées aux films/émissions (format, genre, titre original, dates de production, durée)";
+                    void:dataDump            <https://github.com/SheepWithNoWool/WebS-Cinema/blob/master/queries/tarqlqueries/title.basic.query.sparql>.
+
+:IMDb_crew          dcterms:title            "Title crew";
+                    dcterms:description      "Données liées aux réalisateurs et scénaristes";
+                    void:dataDump            <https://github.com/SheepWithNoWool/WebS-Cinema/blob/master/queries/tarqlqueries/title.crew.query.sparql>.
+
+:IMDb_principals    dcterms:title            "Title principals";
+                    dcterms:description      "Données liées aux castings";
+                    void:dataDump            <https://github.com/SheepWithNoWool/WebS-Cinema/blob/master/queries/tarqlqueries/title.principals.query.sparql>.
+
+:IMDb_ratings       dcterms:title            "Title ratings";
+                    dcterms:description      "Données liées aux notations de films/émissions ";
+                    void:dataDump            <https://github.com/SheepWithNoWool/WebS-Cinema/blob/master/queries/tarqlqueries/title.ratings.query.sparql>.
+
+:IMDb_name_basics   dcterms:title            "Name basics";
+                    dcterms:description      "Données liées aux acteurs (nom, date de naissance/mort, professions, films notables)";
+                    void:dataDump            <https://github.com/SheepWithNoWool/WebS-Cinema/blob/master/queries/tarqlqueries/name.basics.query.sparql>.
 
 :Goodbooks          a                        void:Dataset;
                     dcterms:title            "Goodbooks";
