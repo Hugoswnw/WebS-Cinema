@@ -11,4 +11,6 @@ Les données choisies portent sur le cinéma. Elles ont été acquises à partir
 * Etape 2 : Liaison de données et requêtes SPARQL associées
 * Etape 3 : Utilisation de vocabulaires VOID pour décrire le jeu de données
 
+Le requêtage des données s'est fait à partir du serveur SPARQL Apache Fuseki.
+
 Slides : https://docs.google.com/presentation/d/1h7EcLjd563oI_5XP4e-d_0SJ9SLe8dtliSmFUm2CpQ4/edit
