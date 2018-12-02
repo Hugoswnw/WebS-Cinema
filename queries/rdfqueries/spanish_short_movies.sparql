@@ -3,9 +3,7 @@ PREFIX swnw: <http://swnw.eu/>
 
 SELECT (COUNT( DISTINCT ?name ) AS ?nbFilms)
 WHERE {
-	?id sch:countryOfOrigin ?country;
+	?id sch:countryOfOrigin "ES";
 		sch:name ?name;
-		swnw:type ?type.
-	FILTER (?country = "ES").
-	FILTER (?type = "short").
+		swnw:type "short".
 }

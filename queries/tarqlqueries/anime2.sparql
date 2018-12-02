@@ -1,0 +1,17 @@
+# Fichier de mapping du dataset "animes" pour le projet de Web Sémantique
+# Auteurs : Arthur Liégeois & Maxime Loizon, M1 ALMA-ATAL 2018
+PREFIX rdf: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbpedia: <http://dbpedia.org/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rev: <http://purl.org/stuff/rev#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+PREFIX sch: <http://schema.org/>
+CONSTRUCT {
+	?URI_ANIME sch:datePublished ?DATE.
+}
+WHERE {
+	BIND(URI(CONCAT('https://myanimelist.net/anime/', ?anime_id)) AS ?URI_ANIME).
+	BIND(STRDT(SUBSTR(?aired_string, strlen(?aired_string)-3, 4), sch:Date) AS ?DATE).
+	FILTER REGEX(str(?DATE), "[0-9]+").
+}

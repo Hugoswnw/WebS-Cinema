@@ -1,0 +1,26 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX imdb: <http://www.imdb.com/title/>
+PREFIX sch: <http://schema.org/>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+
+#Movie type, title, pubication date
+CONSTRUCT {
+    ?id a sch:Movie;
+        sch:name ?originalTitle;
+        sch:datePublished ?startYear.
+}
+WHERE {
+    BIND (URI(CONCAT('http://www.imdb.com/title/', ?tconst)) AS ?id).
+    FILTER (?titleType="tvSeries").
+}
+
+#genre
+CONSTRUCT {
+    ?id sch:genre ?genre.
+}
+WHERE {
+    BIND (URI(CONCAT('http://www.imdb.com/title/', ?tconst)) AS ?id).
+    FILTER (?titleType="tvSeries").
+    OPTIONAL { ?genre apf:strSplit (?genres ","). FILTER (?genres != '\\N')}
+}

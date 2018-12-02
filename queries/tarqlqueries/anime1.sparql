@@ -1,0 +1,28 @@
+# Fichier de mapping du dataset "animes" pour le projet de Web Sémantique
+# Auteurs : Arthur Liégeois & Maxime Loizon, M1 ALMA-ATAL 2018
+PREFIX rdf: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbpedia: <http://dbpedia.org/ontology#>
+PREFIX schema: <http://schema.org/>
+PREFIX rev: <http://purl.org/stuff/rev#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+CONSTRUCT {
+	?URI_ANIME a dbpedia:Anime;
+    	schema:name ?TITLE;
+    	dbpedia:numberOfEpisodes ?NUMBEROFEPISODES;
+    	schema:contentRating ?CONTENT_RATING;
+    	rev:rating ?SCORE;
+    	rev:totalVotes ?SCORED_BY;
+    	schema:producer ?PRODUCERS;
+    	schema:productionCompany ?STUDIOS.
+}
+WHERE {
+	BIND(URI(CONCAT('https://myanimelist.net/anime/', ?anime_id)) AS ?URI_ANIME)
+	BIND(xsd:nonNegativeInteger(?episodes) AS ?NUMBEROFEPISODES)
+	BIND(xsd:string(?title) AS ?TITLE)
+	BIND(xsd:decimal(?score) AS ?SCORE)
+	BIND(xsd:integer(?scored_by) AS ?SCORED_BY)
+	BIND(xsd:string(?rating) AS ?CONTENT_RATING)
+	BIND(xsd:string(?producer) AS ?PRODUCERS)
+	BIND(xsd:string(?studio) AS ?STUDIOS)
+}
