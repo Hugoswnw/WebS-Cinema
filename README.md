@@ -1,16 +1,29 @@
 # WebS-Cinema
-Projet Dana : Open Data in the Cloud of Linked Data
+## **Project Overview**
 
-**Thème : "Films au travers des âges et des pays"**
+This project aims to convert **open data** into **semantic data** and link it to the **Linked Data Cloud**. It investigates the evolution of **cinema across different eras and regions**.
 
-Ce projet vise à transformer des données ouvertes en données sémantiques, puis de les lier au Cloud de Linked Data.
+---
 
-Les données choisies portent sur le cinéma. Elles ont été acquises à partir de IMDB.
+## **Data & Statistics**
 
-* Etape 1 : Choix des données, phase de sémantisation et requêtes SPARQL
-* Etape 2 : Liaison de données et requêtes SPARQL associées
-* Etape 3 : Utilisation de vocabulaires VOID pour décrire le jeu de données
+The selected data focuses on cinema and was acquired from **IMDB**.
 
-Le requêtage des données s'est fait à partir du serveur SPARQL Apache Fuseki.
+* **Step 1**: Data selection, semantic transformation, and SPARQL queries
+* **Step 2**: Data linking and associated SPARQL queries
+* **Step 3**: Using **VOID vocabularies** to describe the dataset
 
-Slides : https://docs.google.com/presentation/d/1h7EcLjd563oI_5XP4e-d_0SJ9SLe8dtliSmFUm2CpQ4/edit
+Data querying was done using the **Apache Fuseki SPARQL server**.
+
+---
+
+## **Key Outcomes**
+
+- **Data Transformation**: Successfully converted open film data into linked, semantic data.
+- **SPARQL Queries**: Efficiently performed queries to extract meaningful insights from the linked data.
+
+---
+
+## **Challenges & Limitations**
+
+- **Data Linking**: The process of linking open data to the Linked Data Cloud posed some challenges, particularly in aligning data formats and maintaining consistency across different datasets.
